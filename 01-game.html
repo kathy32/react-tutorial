@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./build/react.development.js"></script>
+  <script src="./build/react-dom.development.js"></script>
+  <script src="./build/babel.min.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script type="text/babel">
+    class Square extends React.Component {
+      render () {
+        return (
+          <button className='square'>
+            {this.props.value}
+          </button>
+        ) 
+      }
+    }
+
+    class Board extends React.Component {
+      renderSquare (i) {
+        //  Board 向 Square 传值
+        // 传递一个名为 value 的 prop 到 Square 当中
+        return <Square value={i} />
+      }
+
+      render () {
+        const status = 'Next player: X'
+
+        return (
+          <div>
+            <div className='status'>{status}</div>  
+            <div className='board-row'>
+              {this.renderSquare(0)}  
+              {this.renderSquare(1)}  
+              {this.renderSquare(2)}  
+            </div>
+            <div className="board-row">
+              {this.renderSquare(3)}  
+              {this.renderSquare(4)}  
+              {this.renderSquare(5)}  
+            </div>
+            <div className="board-row">
+              {this.renderSquare(6)}  
+              {this.renderSquare(7)}  
+              {this.renderSquare(8)}  
+            </div>
+          </div> 
+        ) 
+      }
+    }
+
+    ReactDOM.render(
+      <Board/>,
+      document.getElementById('app')
+    )
+  </script>
+</body>
+</html>
