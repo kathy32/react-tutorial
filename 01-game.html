@@ -13,10 +13,21 @@
 
   <script type="text/babel">
     class Square extends React.Component {
+      constructor (props) {
+        super(props)
+        this.state =  {
+          value: null
+        }
+      }
+
+      // 给组件添加 交互功能
       render () {
         return (
-          <button className='square'>
-            {this.props.value}
+          <button 
+            className='square'
+            onClick = { () => this.setState({value: 'X'}) }
+          >
+            {this.state.value}
           </button>
         ) 
       }
